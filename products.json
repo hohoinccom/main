@@ -1,40 +1,20 @@
 {
-  "users": [
+  "products": [
     {
-      "userId": 1,
-      "firstName": "AAAAA",
-      "lastName": "as23",
-      "phoneNumber": "123456",
-      "emailAddress": "AAAAA@test.com",
-      "homepage": "https://amogg.tistory.com/1"
+      "title": "Deskeen",
+      "version": "2.0.5",
+      "bunldeId": "com.littlehj.macos.Deskeen2",
+      "url": "https://apps.apple.com/app/id6746357941",
+      "image": "http://example.com/image1.png",
+      "published": true
     },
-    {
-      "userId": 2,
-      "firstName": "BBBB",
-      "lastName": "h5jdd",
-      "phoneNumber": "123456",
-      "homepage": "https://amogg.tistory.com/2"
-    },
-    {
-      "userId": 3,
-      "firstName": "CCCCC",
-      "lastName": "2dhbs",
-      "phoneNumber": "33333333",
-      "homepage": "https://amogg.tistory.com/3"
-    },
-    {
-      "userId": 4,
-      "firstName": "DDDDD",
-      "lastName": "bacasd",
-      "phoneNumber": "222222222",
-      "homepage": "https://amogg.tistory.com/4"
-    },
-    {
-      "userId": 5,
-      "firstName": "EEEEE",
-      "lastName": "asdfasdf",
-      "phoneNumber": "111111111",
-      "homepage": "https://amogg.tistory.com/5"
+     {
+      "title": "DragTime",
+      "version": "1.0.0",
+      "bunldeId": "com.littlehj.macos.DragTime",
+      "url": "https://apps.apple.com/app/id6742525406",
+      "image": "http://example.com/image1.png",
+      "published": false
     }
   ]
 }
