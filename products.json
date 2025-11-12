@@ -5,7 +5,7 @@
       "title": "Deskeen",
       "version": "2.0.5",
       "bundleId": "com.littlehj.macos.Deskeen2",
-      "url": "https://apps.apple.com/app/id6746357941",
+      "url": "https://apps.apple.com/app/id6746357941?mt=12",
       "image": "http://example.com/image1.png",
       "published": true
     },
@@ -13,7 +13,7 @@
       "title": "DragTime",
       "version": "1.0.0",
       "bundleId": "com.littlehj.macos.DragTime",
-      "url": "https://apps.apple.com/app/id6742525406",
+      "url": "https://apps.apple.com/app/id6742525406?mt=12",
       "image": "http://example.com/image1.png",
       "published": false
     }
