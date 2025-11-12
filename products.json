@@ -6,7 +6,7 @@
       "version": "2.0.5",
       "bundleId": "com.littlehj.macos.Deskeen2",
       "url": "https://apps.apple.com/app/id6746357941?mt=12",
-      "image": "http://example.com/image1.png",
+      "image": "https://hohoinccom.github.io/main/images/product_deskeen.jpg",
       "published": true
     },
     {
@@ -14,7 +14,7 @@
       "version": "1.0.0",
       "bundleId": "com.littlehj.macos.DragTime",
       "url": "https://apps.apple.com/app/id6742525406?mt=12",
-      "image": "http://example.com/image1.png",
+      "image": "https://hohoinccom.github.io/main/images/product_dragtime.jpg",
       "published": false
     }
   ]
