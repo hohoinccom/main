@@ -8,7 +8,7 @@
       "appstoreUrl": "https://apps.apple.com/app/id6746357941?mt=12",
       "productUrl": "https://hohoinccom.github.io/main/images/product_deskeen.jpg",
       "price": "$6.99",
-      "published": true
+      "featured": false
     },
     {
       "title": "DragTime",
@@ -17,7 +17,7 @@
       "appstoreUrl": "https://apps.apple.com/app/id6742525406?mt=12",
       "productUrl": "https://hohoinccom.github.io/main/images/product_dragtime.jpg",
       "price": "$4.99",
-      "published": false
+      "featured": true
     }
   ]
 }
