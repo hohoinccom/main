@@ -672,6 +672,44 @@ aside.alert.warning:before {
     background-color: #fff;
 }
 
+/* DragTime */
+
+.dragtime {
+    text-align: center;
+    background: url(../images/header-bg-dragtime.jpg) center;
+	background-size: cover;
+}
+
+.dragtime h1 {
+    font-size: 50px;
+    letter-spacing: -2px;
+    margin: 0;
+    padding: 1em 0 0;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0px 2px 4px rgb(20, 20, 20);
+}
+
+.dragtime .intro {
+    font-size: 20px;
+    font-weight: 200;
+    text-shadow: 0px 2px 4px rgb(20, 20, 20);
+    color: #fff;
+    opacity: 0.85;
+	margin: 15px 10px;
+	letter-spacing: -0.4px;
+}
+
+.dragtime-image {
+    background: url(../images/dragtime-app.webp) no-repeat;
+    background-size: contain;
+    width: 100%;
+    max-width: 984px;
+    aspect-ratio: 984 / 350;
+    margin: 0 auto;
+    position: relative;
+}
+
 /* deskeen */
 
 .deskeen {
