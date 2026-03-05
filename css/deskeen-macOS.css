@@ -2051,3 +2051,117 @@ span.discount-badge {
         aspect-ratio: 310 / 110;
     }
 }
+
+/* What's New Banner Style */
+.whats-new-banner {
+    background-color: #303032; 
+    padding: 8px 0;
+    width: 100%;
+    font-family: 'Frutiger Neue', sans-serif;
+}
+
+.whats-new-banner .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* 공통 배지 스타일 */
+.whats-new-banner .badge {
+    background-color: #FF2D55; 
+    height: 24px; /* 높이를 고정하여 수직 중앙 제어 */
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* 왼쪽 WHAT'S NEW 배지 (기존 이미지의 청록색 계열) */
+.status-badge {
+    background-color: #1a96a3;
+    color: #ffffff;
+}
+
+/* 오른쪽 WATCH NOW 배지 (다크/버튼 스타일) */
+.watch-badge {
+    background-color: rgb(255, 255, 255);
+    height: 22px; /* 높이를 고정하여 수직 중앙 제어 */
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.badge-link:hover .watch-badge {
+    background-color: #000000;
+}
+
+/* 메시지 텍스트 정렬 */
+.whats-new-banner .message {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1; /* 텍스트 상하 여백 제거 */
+    margin-bottom: 1px; /* 폰트 베이스라인에 따른 미세 조정 */
+}
+
+/* 플레이 아이콘 (삼각형) */
+.play-icon {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #000000;
+    margin-left: 6px;
+    display: inline-block;
+}
+
+/* 링크 기본 스타일 제거 */
+.badge-link {
+    text-decoration: none;
+    display: inline-flex;
+}
+
+.whats-new-banner .more-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .whats-new-banner {
+        padding: 15px 10px; /* 모바일에서 상하 여백을 조금 더 넓힘 */
+    }
+
+    .whats-new-banner .container {
+        flex-direction: column; /* 가로 배열을 세로 배열로 변경 */
+        gap: 10px; /* 세로로 쌓인 요소들 간의 간격 */
+        text-align: center;
+    }
+
+    .whats-new-banner .message {
+        font-size: 13px; /* 모바일에서는 텍스트 크기를 살짝 줄임 */
+        line-height: 1.4; /* 문장이 두 줄이 될 경우를 대비해 행간 확보 */
+        max-width: 90%; /* 양옆에 여백을 주어 답답하지 않게 함 */
+    }
+
+    .whats-new-badge, .watch-badge {
+        height: 28px; /* 모바일에서는 터치하기 편하게 높이를 살짝 키움 */
+        font-size: 12px;
+    }
+}
