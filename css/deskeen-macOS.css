@@ -672,6 +672,43 @@ aside.alert.warning:before {
     background-color: #fff;
 }
 
+/* PDF Pop */
+.pdfpop {
+    text-align: center;
+    background: url(../images/header-bg-dragtime.jpg) center;
+	background-size: cover;
+}
+
+.pdfpop h1 {
+    font-size: 50px;
+    letter-spacing: -2px;
+    margin: 0;
+    padding: 1em 0 0;
+    color: #fff;
+    font-weight: 700;
+    text-shadow: 0px 2px 4px rgb(20, 20, 20);
+}
+
+.pdfpop .intro {
+    font-size: 20px;
+    font-weight: 200;
+    text-shadow: 0px 2px 4px rgb(20, 20, 20);
+    color: #fff;
+    opacity: 0.85;
+	margin: 15px 10px;
+	letter-spacing: -0.4px;
+}
+
+.pdfpop-image {
+    background: url(../images/dragtime-app.webp) no-repeat;
+    background-size: contain;
+    width: 100%;
+    max-width: 984px;
+    aspect-ratio: 984 / 350;
+    margin: 0 auto;
+    position: relative;
+}
+
 /* DragTime */
 
 .dragtime {
@@ -2265,4 +2302,110 @@ span.discount-badge {
     .score {
         font-size: 18px;
     }
+}
+
+/* PDF Pop */
+/* PDFPOP 헤더 - 하늘색 배경 및 간격 최적화 */
+.pdfpop-header-wrapper {
+    width: 100% !important;
+    padding: 80px 0 60px 0 !important; /* 전체적인 상하 여백도 소폭 조절 */
+    background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%) !important;
+    border-bottom: 1px solid #e5e5e7 !important; 
+    display: block !important;
+}
+
+.pdfpop-main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* 이미지 영역 - 하단 간격을 40px -> 10px로 축소 */
+.pdfpop-image-area {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 10px !important; /* 이미지와 글자 사이 간격 좁힘 */
+    width: 100%;
+}
+
+.pdfpop-pure-img {
+    max-width: 75% !important;
+    height: auto !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    display: inline-block;
+}
+
+/* 텍스트 영역 - 상단 간격 제거 */
+.pdfpop-main-title {
+    /* 기존 속성 유지 */
+    font-size: 56px !important;
+    font-weight: 800 !important;
+    color: #1d1d1f !important;
+    margin: 0 0 10px 0 !important;
+    letter-spacing: -0.02em !important;
+
+    /* 아이콘 정렬을 위한 추가 속성 */
+    display: flex !important;
+    align-items: center !important; /* 수직 중앙 정렬 */
+    gap: 16px !important;           /* 아이콘과 텍스트 사이 간격 */
+    justify-content: center !important;
+}
+
+/* 아이콘 이미지 전용 스타일 */
+.pdfpop-header-icon {
+    height: 1.1em !important;       /* 56px 텍스트 높이에 맞게 자동 조절 */
+    width: auto !important;
+    border-radius: 22% !important;  /* 맥 앱 아이콘 특유의 곡률 */
+    object-fit: contain !important;
+    /* 시각적 보정: 텍스트 베이스라인에 맞춰 미세하게 위로 올림 */
+    transform: translateY(-2px) !important; 
+}
+
+.pdfpop-sub-text {
+    font-size: 24px !important;
+    color: #475569 !important;
+    line-height: 1.4 !important;
+    margin-bottom: 35px !important; /* 설명글과 버튼 사이 간격도 소폭 조정 */
+}
+
+.pdfpop-download-btn img {
+    width: 180px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 반응형 대응 */
+@media (max-width: 768px) {
+    .pdfpop-header-wrapper {
+        padding: 50px 20px !important;
+    }
+    .pdfpop-main-title {
+        font-size: 38px !important;
+    }
+    .pdfpop-image-area {
+        margin-bottom: 5px !important;
+    }
+}
+
+.requirement-note {
+  font-size: 0.85em;
+  color: #86868b;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1;
+  position: relative;
+  top: -1px; 
+  margin-left: 6px;
 }
