@@ -991,6 +991,12 @@ h3.feature-sub-title {
 	border-radius: 4px;
 }
 
+.gallery-image.allfeaturebox {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0),
+	0 0 2px rgba(0,0,0,0);
+	border-radius: 20px;
+}
+
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .gallery-image.light,
     .gallery2-image.light
@@ -2098,13 +2104,13 @@ span.discount-badge {
 
 /* 공통 배지 스타일 */
 .whats-new-banner .badge {
-    background-color: #FF2D55; 
+    background-color: #ffd82d; 
     height: 24px; /* 높이를 고정하여 수직 중앙 제어 */
     padding: 0 10px;
     border-radius: 6px;
     font-size: 11px;
     font-weight: 700;
-    color: #ffffff;
+    color: #140202;
     display: inline-flex;
     align-items: center;
     justify-content: center;
