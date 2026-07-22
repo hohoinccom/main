@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create unlimited extra Docks on your Mac. Boost productivity with Group, Flow context awareness, wireless iOS remote control, and gesture-based Shelf." />
+    <meta name="keywords" content="Dock Float, Mac Dock, macOS launcher, Mac productivity, custom Dock, desktop organizer, Mac shortcuts, Action Folder, iOS remote control, macro keypad, Mac workflow" />
+    <link rel="icon" type="image/png" href="images/dockfloat-favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="images/dockfloat-favicon.svg" />
+    <link rel="shortcut icon" href="images/dockfloat-favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/dockfloat-apple-touch-icon.png" />
+    <link rel="manifest" href="dockfloat-site.webmanifest" />
+    <title>Dock Float - Beyond the Dock. Beyond expectations.</title>
+
+    <meta property="og:url" content="http://www.hohoinc.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dock Float - Beyond the Dock. Beyond expectations.">
+    <meta property="og:description" content="Create unlimited extra Docks on your Mac. Boost productivity with Group, Flow context awareness, wireless iOS remote control, and gesture-based Shelf.">
+    <meta property="og:image" content="https://hohoinccom.github.io/main/images/pdfpop_icon.png" />
+        
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hohoincapp" />
+    <meta name="twitter:title" content="Dock Float" />
+    <meta name="twitter:description" content="Dock Float - Beyond the Dock. Beyond expectations." />
+    <meta name="twitter:url" content="https://x.com/hohoincapp" />
+    <meta name="twitter:image" content="https://hohoinccom.github.io/main/images/dockfloat_1024.png" />
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #f5f5f7;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+            overflow-x: hidden;
+        }
+
+        /* 0. Global Navigation */
+        .global-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            background-color: rgba(0, 0, 0, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-content {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            font-weight: 600;
+            font-size: 15px;
+            color: #f5f5f7;
+            text-decoration: none;
+            letter-spacing: 0em;
+        }
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 28px;
+            align-items: center;
+        }
+        .nav-list li a.nav-link {
+            text-decoration: none;
+            color: #f5f5f7;
+            opacity: 0.8;
+            font-size: 12px;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+        .nav-list li a.nav-link:hover {
+            opacity: 1;
+        }
+        .nav-list li.view-in-app-store a.nav-link {
+            background-color: #f5f5f7;
+            color: #000000 !important;
+            padding: 4px 12px;
+            border-radius: 980px;
+            opacity: 1 !important;
+            font-weight: 500 !important;
+            transition: background-color 0.3s ease;
+        }
+        .nav-list li.view-in-app-store a.nav-link:hover {
+            background-color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+        }
+        
+        /* App Icon Styling */
+        .hero-app-icon {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 28px auto;
+            border-radius: 24px;
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .hero-app-icon:hover {
+            transform: scale(1.05);
+        }
+        .hero-app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Retina Image Rule */
+        .retina-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 36px;
+            display: block;
+        }
+
+        /* Large Image Placeholder Box */
+        .img-placeholder-large {
+            background: linear-gradient(145deg, #1c1c1e, #111113);
+            border-radius: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6e6e73;
+            font-size: 1rem;
+            font-weight: 500;
+            width: 100%;
+            min-height: 540px;
+            text-align: center;
+            padding: 40px;
+            margin: 0 auto;
+        }
+
+        /* Video Containers */
+        .video-container-large {
+            width: 100%;
+            border-radius: 36px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            background-color: #111113;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .retina-video {
+            width: 100%;
+            height: auto;
+            max-height: 640px;
+            object-fit: cover;
+            display: block;
+            border-radius: 36px;
+        }
+        .youtube-container-large {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 36px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            background-color: #111113;
+            margin: 0 auto;
+        }
+        .youtube-container-large iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 1. Hero Section */
+        .hero {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px 20px;
+            background: radial-gradient(circle at center, #1d1d1f 0%, #000000 70%);
+            position: relative;
+        }
+        .hero-text-container {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            background: linear-gradient(135deg, #ffffff 30%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+        .hero h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #d2d2d7;
+            margin: 0 0 20px 0;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #86868b;
+            line-height: 1.6;
+            margin: 0 0 32px 0;
+        }
+        .hero-visual {
+            width: 100%;
+            max-width: 1040px;
+        }
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #f5f5f7;
+            color: #000000;
+        }
+        .btn-primary:hover {
+            background-color: #ffffff;
+            transform: scale(1.02);
+        }
+        .btn-outline {
+            border: 1px solid #424245;
+            color: #f5f5f7;
+        }
+        .btn-outline:hover {
+            border-color: #f5f5f7;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* Section Common */
+        section {
+            padding: 100px 40px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #f5f5f7;
+            letter-spacing: -0.02em;
+        }
+        .section-desc {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #86868b;
+            max-width: 780px;
+            margin: 0 auto 60px auto;
+            line-height: 1.6;
+        }
+
+        /* 2. Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+        .bento-card {
+            background-color: #161617;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .bento-card:hover {
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-4px);
+        }
+        .bento-card.full {
+            grid-column: span 2;
+        }
+        .bento-content {
+            padding: 48px;
+            text-align: center;
+        }
+        .bento-visual {
+            padding: 0 48px 48px 48px;
+            width: 100%;
+        }
+        .bento-card h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+        .bento-card p {
+            font-size: 1.1rem;
+            color: #86868b;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        /* 3. Workflows Vertical Blocks */
+        .workflow-item {
+            margin-bottom: 140px;
+            text-align: center;
+        }
+        .workflow-item:last-child {
+            margin-bottom: 0;
+        }
+        .workflow-item h3 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .workflow-item p {
+            font-size: 1.2rem;
+            color: #86868b;
+            line-height: 1.6;
+            max-width: 780px;
+            margin: 0 auto 52px auto;
+        }
+
+        /* 4. Use Cases Section */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .use-case-card {
+            background-color: #161617;
+            border-radius: 28px;
+            padding: 40px 32px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: background-color 0.3s ease;
+        }
+        .use-case-card:hover {
+            background-color: #1d1d1f;
+        }
+        .use-case-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 14px 0;
+            color: #ffffff;
+        }
+        .use-case-card p {
+            font-size: 1rem;
+            color: #86868b;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 5. Footer & Support Section */
+        footer.app-footer {
+            background-color: #000000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 80px 20px 40px 20px;
+            color: #86868b;
+            font-size: 0.95rem;
+        }
+        .footer-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .footer-column h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #f5f5f7;
+            margin: 0 0 16px 0;
+            line-height: 1.3;
+        }
+        .footer-column p {
+            line-height: 1.6;
+            margin: 0 0 16px 0;
+        }
+        .footer-column strong {
+            color: #f5f5f7;
+        }
+        .footer-column a {
+            color: #2997ff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        /* Price Highlight Box (타이트하게 여백 축소) */
+        .price-highlight-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 14px 18px; /* 여백 다이어트 */
+            margin-bottom: 14px; /* 아래 요소와의 간격 단축 */
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .price-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .price-label {
+            font-size: 0.9rem;
+            color: #d2d2d7;
+            font-weight: 500;
+        }
+        .price-val-mac {
+            font-size: 1.15rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .price-badge-free {
+            background-color: rgba(48, 209, 88, 0.15);
+            color: #30d158;
+            border: 1px solid rgba(48, 209, 88, 0.3);
+            padding: 2px 8px;
+            border-radius: 980px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        /* App Store Badge Group (요청해주신 타이트한 CSS 적용) */
+        .app-store-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 12px 0; /* 기존 5px에서 수직 시각적 밸런스를 위해 12px로 정돈 */
+            flex-wrap: wrap;
+        }
+        .itunes-download-link {
+            display: inline-block;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .itunes-download-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        .itunes-download-link img {
+            display: block;
+            height: auto;
+        }
+
+        .system-requirement {
+            font-size: 0.85rem;
+            color: #86868b;
+            line-height: 1.55; /* 여백 완화를 위해 줄간격 조절 */
+            margin-top: 0;
+        }
+
+        /* Site Footer (Copyright) Style */
+        .site-footer {
+            max-width: 1040px;
+            margin: 50px auto 0 auto;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+        .site-footer .copyright {
+            font-size: 0.85rem;
+            color: #6e6e73;
+            margin: 0;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .workflow-item h3 {
+                font-size: 2.2rem;
+            }
+            .img-placeholder-large {
+                min-height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Global Navigation -->
+    <nav class="global-nav">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">Dock Float</a>
+            <ul class="nav-list">
+                <li><a class="nav-link" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="deskeen.html">Deskeen</a></li>
+                <li><a class="nav-link" href="dragtime.html">DragTime</a></li>
+                <li><a class="nav-link" href="pdfpop.html">PDF Pop</a></li>
+                <li><a class="nav-link" href="#dockfloat-support">Support</a></li>
+                <li class="view-in-app-store"><a class="nav-link link-app-store itunes-download-link" href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank">View in App Store</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-text-container">
+            <div class="hero-app-icon">
+                <img src="images/dockfloat_1024.png" alt="Dock Float">
+            </div>
+            
+            <h1>Beyond the Dock.<br>Beyond expectations.</h1>
+            <h2>Fill the missing piece of your Mac experience.</h2>
+            <p>We’ve all been there. That moment you look at your screen and think, “I just need one more Dock.” Dock Float transforms that familiar limitation into absolute freedom. The workspace you’ve always imagined is finally a reality.</p>
+            <div class="cta-group">
+                <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn btn-primary">Get Dock Float for macOS</a>
+                <a href="https://apps.apple.com/app/id6761806102" target="_blank" class="btn btn-outline">Get Dock Float Remote for iOS</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="img-placeholder-large" style="min-height: 580px;">
+                <!-- <img src="hero-mockup@2x.png" alt="Hero Preview" class="retina-img"> -->
+                [ Hero Main Mockup View ]<br>권장 원본 크기: 2000px × 1100px 이상 (2x)
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Bento Grid -->
+    <section>
+        <h2 class="section-title">Familiarity meets ultimate flexibility.</h2>
+        <p class="section-desc">Keep your primary Dock exactly as it is. Dock Float opens up an entirely new, highly intuitive space for your overflowing apps, files, and complex projects.</p>
+
+        <div class="bento-grid">
+            <div class="bento-card full">
+                <div class="bento-content">
+                    <h3>As many as you need. Wherever you want.</h3>
+                    <p>Create as many new Docks as you like and place them anywhere on your screen. There’s no need to cram everything into one crowded space. Within each Dock, you can divide items into Categories—flawlessly organizing apps, files, folders, and web URLs by their purpose.</p>
+                </div>
+                <div class="bento-visual">
+                    <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
+                        [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bento-card">
+                <div class="bento-content">
+                    <h3>Fold it away like magic. Unfurl it on demand.</h3>
+                    <p>Collapse or hide idle Docks with a single click. Turn on Edge Mode to pin an open Dock to the edge of your screen like a bookmark.</p>
+                </div>
+                <div class="bento-visual">
+                    <div class="img-placeholder-large" style="min-height: 380px;">
+                        [ Edge Mode Animation / Image ]<br>권장 크기: 1000px × 700px (2x)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bento-card">
+                <div class="bento-content">
+                    <h3>The most elegant automation. Just drop it.</h3>
+                    <p>Toss a cluttered mess of files onto an Action Folder, and watch them organize themselves instantly or trigger Apple Shortcuts.</p>
+                </div>
+                <div class="bento-visual">
+                    <div class="img-placeholder-large" style="min-height: 380px;">
+                        [ Action Folder & Shortcuts Image ]<br>권장 크기: 1000px × 700px (2x)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bento-card full">
+                <div class="bento-content">
+                    <h3>Designed to disappear into your desktop.</h3>
+                    <p>Fine-tune background colors, transparency levels, and category styles. Save unique sorting methods, customize indicator colors, and pre-define drag-and-drop actions. Personalization molded entirely to you.</p>
+                </div>
+                <div class="bento-visual">
+                    <div class="img-placeholder-large" style="min-height: 480px;">
+                        [ Customization Settings Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflows Redefined -->
+    <section>
+        <h2 class="section-title">Workflows redefined.</h2>
+        <p class="section-desc">Far beyond a basic launcher, Dock Float features signature killer capabilities designed to push your productivity to the absolute limit.</p>
+
+        <!-- 1. Group -->
+        <div class="workflow-item">
+            <h3>Group: Extreme simplicity.<br>Everything in one icon.</h3>
+            <p>No matter how many tools you juggle, your screen should stay pristine. Group any related apps, files, or folders into a single, beautifully unified icon on your Dock based on your own logic. Click the Group, and everything you tucked away instantly unfolds.</p>
+            <div class="img-placeholder-large">
+                [ Group Feature Large Mockup / Video View ]
+            </div>
+        </div>
+
+        <!-- 2. Flow -->
+        <div class="workflow-item">
+            <h3>Flow: Connect the context.<br>Unbroken focus.</h3>
+            <p>Tired of digging for the same files every time you launch an app? Flow solves this intelligently. Pre-link essential files and folders to a specific program. The moment you launch that program, your predefined toolkit seamlessly glides in. No searching. Just unbroken focus.</p>
+            <div class="img-placeholder-large">
+                [ Flow Context-Aware Large Mockup / Video View ]
+            </div>
+        </div>
+
+        <!-- 3. Dock Float Remote -->
+        <div class="workflow-item">
+            <h3>Dock Float Remote:<br>The ultimate wireless control center on your desk.</h3>
+            <p>Extend your macOS command center directly into your mobile ecosystem. Open the Dock Float Remote app on your iPhone or iPad. Every Dock on your Mac syncs in real time. Launch apps, instantly open documents, and map Mission Control or Screen Capture to intuitive Action Buttons. Command your Mac wirelessly.</p>
+            <div class="img-placeholder-large">
+                [ Mac & iPad Remote Sync Mockup / YouTube Video View ]
+            </div>
+        </div>
+
+        <!-- 4. Shelf -->
+        <div class="workflow-item">
+            <h3>Shelf: Shake to open.<br>Toss to store.</h3>
+            <p>Copied text, a quick screenshot, a file you’ll need in exactly two minutes. Stop littering your desktop. Just give your mouse a quick shake. The Shelf quietly wakes up on your screen. Toss anything into this temporary holding space and pull it out whenever you need it.</p>
+            <div class="img-placeholder-large">
+                [ Shelf UI Animation Large Mockup / Video View ]
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <!--<section>
+        <h2 class="section-title">Seamlessly integrates into your life.</h2>
+        <p class="section-desc">Discover the perfect synergy Dock Float creates across different creative and professional environments.</p>
+
+        <div class="use-cases-grid">
+            <div class="use-case-card">
+                <h4>👨‍💻 Developer Suite</h4>
+                <p>Set up VS Code and Terminal in a dedicated Dock. Toss finished builds into an Action Folder to trigger a Shortcut workflow that uploads to your server and sends a notification—all in a single drag.</p>
+            </div>
+            <div class="use-case-card">
+                <h4>🎨 Creative Hub</h4>
+                <p>Launch Photoshop, and Flow automatically brings up your project assets and font guides. Shake your mouse to stash reference images into the Shelf while you browse for inspiration.</p>
+            </div>
+            <div class="use-case-card">
+                <h4>📚 Academic Focus</h4>
+                <p>Fold complex windows into compact bookmarks using Edge Mode for pure immersion. Use the Remote app on your iPad to toggle Do Not Disturb and play your focus playlist without switching screens.</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer & Support Section -->
+    <footer class="app-footer" id="dockfloat-support">
+        <div class="footer-container">
+            <!-- Left Column: Support -->
+            <div class="footer-column">
+                <h3>Support</h3>
+                <p>We're always here to help with any questions or comments - feel free to contact us.</p>
+                <p><strong>Dock Float's Menu &gt; About &gt; Send Feedback...'</strong> is perfect for privately sending us issues and feedback.</p>
+                <p>
+                    <a href="https://hohoinc.notion.site/Dock-Flow-Release-Notes-389daae97b9280b8ade5ccb1fb48c817" target="_blank">Release Notes</a> | 
+                    <a href="https://x.com/hohoincapp" target="_blank">Dock Float on X</a>
+                </p>
+            </div>
+
+            <!-- Right Column: Buy & Specs (수정해주신 HTML & 이미지 명칭 완벽 반영) -->
+            <div class="footer-column">
+                <h3>Get Started with Dock Float</h3>
+                
+                <div class="price-highlight-card">
+                    <div class="price-item">
+                        <span class="price-label"><a href="https://apps.apple.com/app/id6761350104?mt=12">Dock Float for macOS</a></span>
+                        <span class="price-val-mac">$6.99</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="price-label"><a href="https://apps.apple.com/app/id6761806102" target="_blank">Dock Float Remote for iOS</a></span>
+                        <span class="price-badge-free">Free</span>
+                    </div>
+                </div>
+                <div class="app-store-group">
+                    <a itemprop="downloadUrl" class="itunes-download-link" href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank">
+                        <img src="images/mac-app-store.svg" width="150" alt="Open in Mac App Store - Dock Float">
+                    </a>
+                    <a class="itunes-download-link" href="https://apps.apple.com/app/id6761806102" target="_blank">
+                        <img src="images/ios-app-store.svg" width="150" alt="Open in iOS App Store - Dock Float Remote">
+                    </a>
+                </div>
+                <p class="system-requirement">
+                    Category: <span itemprop="applicationCategory">Utilities</span><br>
+                    Latest Version: <span itemprop="softwareVersion">1.0.0</span> (<time datetime="2026-07-22">July 22, 2026</time>)<br>
+                    <br>
+                    <strong>Mac Compatibility:</strong> Requires macOS 14.6 or later, for Apple Silicon or Intel Macs<br>
+                    <strong>iOS Remote Compatibility:</strong> Requires iOS 18.6 / iPadOS 18.6 or later
+                </p>
+            </div>
+        </div>
+
+        <!-- Site Footer Copyright -->
+        <div class="site-footer">
+            <p class="copyright">&copy; 2024~<script>document.write(new Date().getFullYear())</script> HOHOINC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
