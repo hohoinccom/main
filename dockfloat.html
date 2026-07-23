@@ -39,7 +39,7 @@
             padding: 0;
             background-color: #000000;
             color: #f5f5f7;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.01em;
             overflow-x: hidden;
@@ -156,7 +156,7 @@
             width: 100%;
             min-height: 540px;
             text-align: center;
-            padding: 40px;
+            padding: 0px;
             margin: 0 auto;
         }
 
@@ -215,7 +215,7 @@
             position: relative;
         }
         .hero-text-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto 40px auto;
             z-index: 2;
         }
@@ -235,11 +235,12 @@
             margin: 0 0 20px 0;
         }
         .hero p {
-            font-size: 1.1rem;
-            color: #86868b;
+            font-size: 1.0rem;
+            color: #c4c4c4;
             line-height: 1.6;
             margin: 0 0 32px 0;
         }
+
         .hero-visual {
             width: 100%;
             max-width: 1040px;
@@ -336,11 +337,11 @@
             letter-spacing: -0.01em;
         }
         .bento-card p {
-            font-size: 1.1rem;
-            color: #86868b;
+            font-size: 1.0rem;
+            color: #c6c6c6;
             line-height: 1.6;
             margin: 0 auto;
-            max-width: 700px;
+            max-width: 800px;
         }
 
         /* 3. Workflows Vertical Blocks */
@@ -434,13 +435,13 @@
             text-decoration: underline;
         }
 
-        /* Price Highlight Box (타이트하게 여백 축소) */
+        /* Price Highlight Box */
         .price-highlight-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 16px;
-            padding: 14px 18px; /* 여백 다이어트 */
-            margin-bottom: 14px; /* 아래 요소와의 간격 단축 */
+            padding: 14px 18px;
+            margin-bottom: 14px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -474,12 +475,12 @@
             text-transform: uppercase;
         }
 
-        /* App Store Badge Group (요청해주신 타이트한 CSS 적용) */
+        /* App Store Badge Group */
         .app-store-group {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 0 0 12px 0; /* 기존 5px에서 수직 시각적 밸런스를 위해 12px로 정돈 */
+            margin: 0 0 12px 0;
             flex-wrap: wrap;
         }
         .itunes-download-link {
@@ -498,7 +499,7 @@
         .system-requirement {
             font-size: 0.85rem;
             color: #86868b;
-            line-height: 1.55; /* 여백 완화를 위해 줄간격 조절 */
+            line-height: 1.55;
             margin-top: 0;
         }
 
@@ -516,11 +517,179 @@
             margin: 0;
         }
 
-        /* Responsive Footer */
-        @media (max-width: 768px) {
-            .footer-container {
+        /* Highlight */
+
+        .highlight-light-yellow {
+            background-color: #F8F244;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-yellow {
+            background-color: #FDE498FF;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-light-pink {
+            background-color: #F8C6F3;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-pink {
+            background-color: hotpink;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-green {
+            background-color: lime;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-orange {
+            background-color: fec98f;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-blue {
+            background-color: rgb(3, 109, 215);
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-strong {
+            font-weight: bold;
+        }
+
+        .highlight-brighter-red {
+            background-color: #f5848d;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+         .highlight-brighter-red2 {
+            background-color: #e64a57;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-brighter-purple {
+            background-color: #8603f2;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-dark-green {
+            background-color: #057a2e;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highligh-dark-crimson {
+            background-color: #a1049c;
+            padding: 3px 5px;
+            border-radius: 3px;
+        }
+
+        .highlight-under {
+            text-decoration: none;
+            display: inline;
+            box-shadow: inset 0 -9px 0 #FDFFB6;
+        }
+
+        .highlight-bottom-line-brighter-red { 
+            border-bottom: 1px solid #f5848d; 
+        }
+
+        .highlight-bottom-line-brighter-orange { 
+            border-bottom: 1px solid #fec98f; 
+        }
+
+        .highlight-bottom-line-brighter-yellow { 
+            border-bottom: 1px solid #fdfd95; 
+        }
+
+        .highlight-bottom-line-brighter-green { 
+            border-bottom: 1px solid #adffc4; 
+        }
+
+        .highlight-bottom-line-brighter-blue { 
+            border-bottom: 1px solid #59ccff; 
+        }
+
+        .highlight-bottom-line-brighter-purple { 
+            border-bottom: 1px solid #b8acff; 
+        }
+
+        .highlight-bottom-line-brighter-gray { 
+            border-bottom: 1px solid #d5d5df; 
+            box-shadow: inset 0 -2px 0 #d5d5df;
+        }
+
+        .highlight-bottom-line-light-red { 
+            border-bottom: 1px solid #ffadad; 
+        }
+
+        .highlight-bottom-line-light-orange { 
+            border-bottom: 1px solid #ffd6a5; 
+        }
+
+        .highlight-bottom-line-light-yellow { 
+            border-bottom: 1px solid #fdffb6; 
+        }
+
+        .highlight-bottom-line-light-green { 
+            border-bottom: 1px solid #caffbf; 
+        }
+
+        .highlight-bottom-line-light-blue { 
+            border-bottom: 1px solid #9bf6ff; 
+        }
+
+        .highlight-bottom-line-light-purple { 
+            border-bottom: 1px solid #bdb2ff; 
+        }
+
+        .highlight-bottom-line-light-gray { 
+            border-bottom: 1px solid #dfdfdf; 
+        }
+
+        .highlight-bottom-line-sky-blue { 
+            border-bottom: 1px solid #b0e0e6; 
+        }
+
+        /* ==========================================
+           Responsive Layout Adjustment (반응형 최적화)
+           ========================================== */
+        @media (max-width: 900px) {
+            /* Bento Grid를 2열에서 1열 목록 형태로 자동 전환 */
+            .bento-grid, .use-cases-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 20px;
+            }
+            .bento-card.full {
+                grid-column: span 1;
+            }
+            .bento-content {
+                padding: 32px 24px 20px 24px;
+            }
+            .bento-visual {
+                padding: 0 20px 24px 20px;
+            }
+            .bento-card h3 {
+                font-size: 1.75rem;
+            }
+            .bento-card p {
+                font-size: 1rem;
+            }
+
+            /* 전체 섹션 여백 다이어트 */
+            section {
+                padding: 60px 20px;
             }
             .hero h1 {
                 font-size: 2.5rem;
@@ -528,11 +697,33 @@
             .section-title {
                 font-size: 2.2rem;
             }
+            .workflow-item {
+                margin-bottom: 80px;
+            }
             .workflow-item h3 {
                 font-size: 2.2rem;
             }
+            .workflow-item p {
+                margin-bottom: 32px;
+            }
             .img-placeholder-large {
-                min-height: 360px;
+                min-height: 320px;
+                padding: 20px;
+                border-radius: 24px;
+            }
+            .cta-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
     </style>
@@ -563,7 +754,8 @@
             
             <h1>Beyond the Dock.<br>Beyond expectations.</h1>
             <h2>Fill the missing piece of your Mac experience.</h2>
-            <p>We’ve all been there. That moment you look at your screen and think, “I just need one more Dock.” Dock Float transforms that familiar limitation into absolute freedom. The workspace you’ve always imagined is finally a reality.</p>
+            <p>We’ve all been there. That moment you look at your screen and think, <span class="highlight-bottom-line-brighter-red">"<strong><i>I just need one more Dock."</i></strong></span><br><br>Dock Float transforms that familiar limitation into absolute freedom. It feels instantly native, blending seamlessly into your system without cluttering it. Just drag and drop your essential apps, files, and folders exactly as you always have. You can even add your favorite Apple Shortcuts right to the Dock for one-click automation.</p>
+            <p>Whether you’re designing, coding, or just browsing the web, build a new Dock with exactly the tools and workflows you need right now. The workspace you’ve always imagined is finally a reality.</p>
             <div class="cta-group">
                 <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn btn-primary">Get Dock Float for macOS</a>
                 <a href="https://apps.apple.com/app/id6761806102" target="_blank" class="btn btn-outline">Get Dock Float Remote for iOS</a>
@@ -572,7 +764,8 @@
         <div class="hero-visual">
             <div class="img-placeholder-large" style="min-height: 580px;">
                 <!-- <img src="hero-mockup@2x.png" alt="Hero Preview" class="retina-img"> -->
-                [ Hero Main Mockup View ]<br>권장 원본 크기: 2000px × 1100px 이상 (2x)
+                <!-- [ Hero Main Mockup View ]<br>권장 원본 크기: 2000px × 1100px 이상 (2x) -->
+                 <img src="images/dock-float-1.webp" class="retina-img">
             </div>
         </div>
     </div>
@@ -586,48 +779,61 @@
             <div class="bento-card full">
                 <div class="bento-content">
                     <h3>As many as you need. Wherever you want.</h3>
-                    <p>Create as many new Docks as you like and place them anywhere on your screen. There’s no need to cram everything into one crowded space. Within each Dock, you can divide items into Categories—flawlessly organizing apps, files, folders, and web URLs by their purpose.</p>
+                    <p>Create as many new Docks as you like and place them anywhere on your screen. There’s no need to cram everything into one crowded space. Within each Dock, you can divide items into Categories—flawlessly organizing <span class="highlight-bottom-line-brighter-red">apps, files, folders, and web URLs</span> by their purpose.</p><br>
+                    <p>And we built it for speed. Up to 10 categories are automatically assigned <span class="highlight-bottom-line-light-purple">keyboard shortcuts (⌘1, ⌘2, etc.)</span>. Jump straight to the category you need with just your fingertips, without ever touching the mouse. Uncompromising power, effortless convenience.</p>
                 </div>
                 <div class="bento-visual">
                     <div class="img-placeholder-large" style="min-height: 480px;">
                         <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
-                        [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x)
+                        <!-- [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
+                         <img src="images/dock-float-2.webp" class="retina-img">
                     </div>
                 </div>
             </div>
-            
-            <div class="bento-card">
-                <div class="bento-content">
-                    <h3>Fold it away like magic. Unfurl it on demand.</h3>
-                    <p>Collapse or hide idle Docks with a single click. Turn on Edge Mode to pin an open Dock to the edge of your screen like a bookmark.</p>
-                </div>
-                <div class="bento-visual">
-                    <div class="img-placeholder-large" style="min-height: 380px;">
-                        [ Edge Mode Animation / Image ]<br>권장 크기: 1000px × 700px (2x)
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bento-card">
-                <div class="bento-content">
-                    <h3>The most elegant automation. Just drop it.</h3>
-                    <p>Toss a cluttered mess of files onto an Action Folder, and watch them organize themselves instantly or trigger Apple Shortcuts.</p>
-                </div>
-                <div class="bento-visual">
-                    <div class="img-placeholder-large" style="min-height: 380px;">
-                        [ Action Folder & Shortcuts Image ]<br>권장 크기: 1000px × 700px (2x)
-                    </div>
-                </div>
-            </div>
-            
+
+            <!-- Collapse, Edge Mode -->
             <div class="bento-card full">
                 <div class="bento-content">
-                    <h3>Designed to disappear into your desktop.</h3>
-                    <p>Fine-tune background colors, transparency levels, and category styles. Save unique sorting methods, customize indicator colors, and pre-define drag-and-drop actions. Personalization molded entirely to you.</p>
+                    <h3><strong><span class="highlight-brighter-red2">Fold</span></strong> it away like magic. <strong><span class="highlight-brighter-purple">Unfurl</span></strong> it on demand.</h3>
+                    <p><strong>Collapse</strong> or hide idle Docks with a single click. Turn on <strong>Edge Mode</strong> to pin an open Dock to the edge of your screen like a bookmark.</p><br>
+                    <p>Maximize your screen real estate while keeping your essential tools just a swipe away.</p>
                 </div>
                 <div class="bento-visual">
                     <div class="img-placeholder-large" style="min-height: 480px;">
-                        [ Customization Settings Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x)
+                        <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
+                        <!-- [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
+                         <img src="images/dock-float-3.webp" class="retina-img">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Folder -->
+            <div class="bento-card full">
+                <div class="bento-content">
+                    <h3>The most elegant <strong>automation</strong>. Just <span class="highlight-blue">drop</span> it.</h3>
+                    <p>A Dock Float Dock is much more than a place to park your apps. Meet the <strong><span class="highlight-bottom-line-brighter-purple">Action Folder</span></strong>—a powerful, exclusive tool that takes your Dock further than macOS ever could. We’ve built in <span class="highlight-bottom-line-brighter-red">eight specialized Action Folders</span> for essential everyday tasks like <span class="highlight-bottom-line-light-yellow">unzipping archives, converting images, and sorting files by extension, date, or size</span>. Just toss a cluttered mess of files onto an Action Folder on your Dock, and watch them organize themselves instantly based on your rules.</p><br>
+                    <p>Take it further with seamless <strong><span class="highlight-bottom-line-brighter-red">Apple Shortcuts integration</span></strong>. Connect your custom Shortcuts (that take files or folders as inputs) directly to an Action Folder. A single drag-and-drop now triggers entirely automated, complex workflows.</p>
+                </div>
+                <div class="bento-visual">
+                    <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
+                        <!-- [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
+                         <img src="images/dock-float-4.webp" class="retina-img">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Customization -->
+            <div class="bento-card full">
+                <div class="bento-content">
+                    <h3>Designed to disappear into your desktop.</h3>
+                    <p>Dock Float gives you ultimate control over how it looks and feels. Fine-tune <span class="highlight-bottom-line-brighter-blue">background colors, transparency levels, category styles, and text palettes</span> so it perfectly matches your setup.</p><br>
+                    <p>For power users, the devil is in the details. Save unique sorting methods for individual tabs—alphabetical for your development tools, chronological for recent files. Customize the indicator colors that show whether an app is running or hidden. You can even pre-define drag-and-drop actions (Move or Copy) for specific folders to slash repetitive tasks. It’s radical personalization, molded entirely to you.</p>
+                </div>
+                <div class="bento-visual">
+                    <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- [ Customization Settings Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
+                        <img src="images/dock-float-5.webp" class="retina-img">
                     </div>
                 </div>
             </div>
@@ -636,66 +842,54 @@
 
     <!-- Workflows Redefined -->
     <section>
-        <h2 class="section-title">Workflows redefined.</h2>
+        <h2 class="section-title">Workflows <strong><span class="highlight-brighter-red2 ">redefined.</span></strong></h2>
         <p class="section-desc">Far beyond a basic launcher, Dock Float features signature killer capabilities designed to push your productivity to the absolute limit.</p>
 
         <!-- 1. Group -->
         <div class="workflow-item">
-            <h3>Group: Extreme simplicity.<br>Everything in one icon.</h3>
-            <p>No matter how many tools you juggle, your screen should stay pristine. Group any related apps, files, or folders into a single, beautifully unified icon on your Dock based on your own logic. Click the Group, and everything you tucked away instantly unfolds.</p>
-            <div class="img-placeholder-large">
-                [ Group Feature Large Mockup / Video View ]
+            <h3><strong><span class="highlight-brighter-purple">Group:</span></strong> Extreme simplicity. Everything in one icon.</h3>
+            <p>No matter how many tools you juggle, your screen should stay pristine. Group any related apps, files, or folders into a single, beautifully unified icon on your Dock based on your own logic. Click the Group, and everything you tucked away instantly unfolds.<br>It’s the most elegant way to conquer limited screen space.</p>
+            <div class="video-container-large">
+                <video autoplay loop muted playsinline poster="images/dock-float-group-preview.webp" class="retina-video">
+                    <source src="images/dock-float-group.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
 
         <!-- 2. Flow -->
         <div class="workflow-item">
-            <h3>Flow: Connect the context.<br>Unbroken focus.</h3>
-            <p>Tired of digging for the same files every time you launch an app? Flow solves this intelligently. Pre-link essential files and folders to a specific program. The moment you launch that program, your predefined toolkit seamlessly glides in. No searching. Just unbroken focus.</p>
-            <div class="img-placeholder-large">
-                [ Flow Context-Aware Large Mockup / Video View ]
+            <h3><strong><span class="highlight-dark-green">Flow:</span></strong> Connect the context. Unbroken focus.</h3>
+            <p>Tired of digging for the same files every time you launch an app? <strong>Flow</strong> solves this intelligently. Pre-link essential files and folders to a specific program. The moment you launch that program, your predefined toolkit seamlessly glides in. No searching. Just unbroken focus<br><br><strong>Flow</strong> solves this intelligently. Pre-link essential files, folders, and apps to a specific program. The moment you launch that program, your predefined toolkit seamlessly glides in from the edge of the screen. No searching. No friction. Just a perfectly uninterrupted workflow.</p>
+            <div class="video-container-large">
+                <video autoplay loop muted playsinline poster="images/dock-float-group-preview.webp" class="retina-video">
+                    <source src="images/dock-float-flow.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
 
         <!-- 3. Dock Float Remote -->
         <div class="workflow-item">
-            <h3>Dock Float Remote:<br>The ultimate wireless control center on your desk.</h3>
-            <p>Extend your macOS command center directly into your mobile ecosystem. Open the Dock Float Remote app on your iPhone or iPad. Every Dock on your Mac syncs in real time. Launch apps, instantly open documents, and map Mission Control or Screen Capture to intuitive Action Buttons. Command your Mac wirelessly.</p>
+            <h3><strong><span class="highlight-blue">Dock Float Remote:</span></strong><br>The ultimate wireless control center on your desk.</h3>
+            <p>Extend your macOS command center directly into your mobile ecosystem. Open the Dock Float Remote app on your iPhone or iPad. Every Dock on your Mac syncs in real time. A light tap on your device launches Mac apps or instantly opens documents.<br><br>We’ve also added customizable Action Buttons to supercharge your speed. Map Mission Control, App Switcher, Launchpad (or Apps in macOS 26+), and Screen Capture to intuitive buttons. Command your Mac wirelessly without learning new keyboard shortcuts. Turn on the 'Keep Your iPhone Awake' option (while plugged in), and you have a dedicated, always-on macro pad right at your fingertips.</p>
             <div class="img-placeholder-large">
-                [ Mac & iPad Remote Sync Mockup / YouTube Video View ]
+                <img src="images/dock-float-6.webp" class="retina-img">
             </div>
         </div>
 
         <!-- 4. Shelf -->
         <div class="workflow-item">
-            <h3>Shelf: Shake to open.<br>Toss to store.</h3>
-            <p>Copied text, a quick screenshot, a file you’ll need in exactly two minutes. Stop littering your desktop. Just give your mouse a quick shake. The Shelf quietly wakes up on your screen. Toss anything into this temporary holding space and pull it out whenever you need it.</p>
-            <div class="img-placeholder-large">
-                [ Shelf UI Animation Large Mockup / Video View ]
+            <h3><strong><span class="highligh-dark-crimson">Shelf:</span></strong> Shake to open. Toss to store.</h3>
+            <p>Copied text, a quick screenshot, a file you’ll need in exactly two minutes. Stop littering your desktop. Just give your mouse a quick <strong>shake</strong>. The <strong>Shelf</strong> quietly wakes up on your screen. Toss anything into this temporary holding space and pull it out whenever you need it. It’s your secret workspace, designed to ensure your focus never breaks.</p>
+            <div class="video-container-large">
+                <video autoplay loop muted playsinline poster="images/doct-float-shelf-preview.webp" class="retina-video">
+                    <source src="images/doct-float-shelf.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </section>
-
-    <!-- Use Cases Section -->
-    <!--<section>
-        <h2 class="section-title">Seamlessly integrates into your life.</h2>
-        <p class="section-desc">Discover the perfect synergy Dock Float creates across different creative and professional environments.</p>
-
-        <div class="use-cases-grid">
-            <div class="use-case-card">
-                <h4>👨‍💻 Developer Suite</h4>
-                <p>Set up VS Code and Terminal in a dedicated Dock. Toss finished builds into an Action Folder to trigger a Shortcut workflow that uploads to your server and sends a notification—all in a single drag.</p>
-            </div>
-            <div class="use-case-card">
-                <h4>🎨 Creative Hub</h4>
-                <p>Launch Photoshop, and Flow automatically brings up your project assets and font guides. Shake your mouse to stash reference images into the Shelf while you browse for inspiration.</p>
-            </div>
-            <div class="use-case-card">
-                <h4>📚 Academic Focus</h4>
-                <p>Fold complex windows into compact bookmarks using Edge Mode for pure immersion. Use the Remote app on your iPad to toggle Do Not Disturb and play your focus playlist without switching screens.</p>
-            </div>
-        </div>
-    </section> -->
 
     <!-- Footer & Support Section -->
     <footer class="app-footer" id="dockfloat-support">
@@ -711,7 +905,7 @@
                 </p>
             </div>
 
-            <!-- Right Column: Buy & Specs (수정해주신 HTML & 이미지 명칭 완벽 반영) -->
+            <!-- Right Column: Buy & Specs -->
             <div class="footer-column">
                 <h3>Get Started with Dock Float</h3>
                 
@@ -725,6 +919,7 @@
                         <span class="price-badge-free">Free</span>
                     </div>
                 </div>
+
                 <div class="app-store-group">
                     <a itemprop="downloadUrl" class="itunes-download-link" href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank">
                         <img src="images/mac-app-store.svg" width="150" alt="Open in Mac App Store - Dock Float">
