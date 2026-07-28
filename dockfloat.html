@@ -382,7 +382,7 @@
             aspect-ratio: 16 / 9;
         }
 
-/* 재생 시작 시 부모 Flex 해제 및 비디오 꽉 채우기 */
+        /* 재생 시작 시 부모 Flex 해제 및 비디오 꽉 채우기 */
         .hero-video-box.is-playing {
             display: block !important; /* flex 속성을 풀어 비디오가 꽉 차게 만듭니다 */
             height: auto !important;
@@ -1168,26 +1168,58 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const heroContainer = document.getElementById('heroVideoContainer');
+            
+            // 원래 이미지 상태의 HTML을 저장해둡니다.
+            const originalContent = heroContainer.innerHTML;
+            let isPlaying = false;
 
-            if (heroContainer) {
-                heroContainer.addEventListener('click', function handler() {
-                    const iframe = document.createElement('iframe');
-                    
-                    // 유튜브 퍼가기 표준 URL 형식 적용
-                    iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0`);
-                    iframe.setAttribute('title', 'Dock Float Overview Video');
-                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                    iframe.setAttribute('allowfullscreen', 'true');
+            // 비디오 열기 함수 (자동 재생 적용)
+            function playVideo() {
+                if (isPlaying) return;
+                
+                const iframe = document.createElement('iframe');
+                // autoplay=1 및 mute 옵션/파라미터로 자동재생 호환성 극대화
+                iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0`);
+                iframe.setAttribute('title', 'Dock Float Overview Video');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                iframe.setAttribute('allowfullscreen', 'true');
 
-                    // 기존 내용 제거 후 iframe으로 전체 교체
-                    this.innerHTML = '';
-                    this.style.cursor = 'default';
-                    this.style.padding = '0';
-                    this.appendChild(iframe);
-                    
-                    this.removeEventListener('click', handler);
-                });
+                heroContainer.innerHTML = '';
+                heroContainer.appendChild(iframe);
+                heroContainer.style.cursor = 'default';
+                isPlaying = true;
             }
+
+            // 비디오 닫기 (원래 이미지로 복원) 함수
+            function closeVideo() {
+                if (!isPlaying) return;
+                
+                heroContainer.innerHTML = originalContent;
+                heroContainer.style.cursor = 'pointer';
+                isPlaying = false;
+            }
+
+            // 비디오 박스 클릭 시 비디오 재생
+            heroContainer.addEventListener('click', function(e) {
+                if (!isPlaying) {
+                    e.stopPropagation(); // 바깥 클릭 이벤트와 충돌 방지
+                    playVideo();
+                }
+            });
+
+            // 비디오 영역 밖(문서 전체)을 클릭하면 영상이 닫히고 이미지로 복원
+            document.addEventListener('click', function(e) {
+                if (isPlaying && !heroContainer.contains(e.target)) {
+                    closeVideo();
+                }
+            });
+
+            // ESC 키를 눌러도 영상이 닫히도록 편의 기능 추가
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isPlaying) {
+                    closeVideo();
+                }
+            });
         });
     </script>
 
