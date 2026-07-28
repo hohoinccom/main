@@ -377,9 +377,12 @@
         .hero-video-box {
             position: relative;
             cursor: pointer;
-            overflow: hidden;
+            overflow: visible; /* X 버튼이 박스 상단에 살짝 걸치도록 설정 */
             width: 100%;
             aspect-ratio: 16 / 9;
+            border-radius: 16px;
+            z-index: 10;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* 재생 시작 시 부모 Flex 해제 및 비디오 꽉 채우기 */
@@ -472,12 +475,91 @@
 
         /* 재생 시작 시 iframe styling */
         .hero-video-box iframe {
-            width: 100%;
-            height: 100%;
-            aspect-ratio: 16 / 9; /* 1920x1080 (16:9) 원본 비율 강제 고정 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
             border: 0;
             border-radius: 16px;
             display: block;
+            z-index: 5;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ==========================================
+        비디오 재생 중 전체 배경 Blur Overlay & X 버튼
+        ========================================== */
+
+        /* 전체 배경을 어둡게 블러 처리하는 레이어 */
+        .video-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 9998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        /* 재생 중 활성화 상태 */
+        body.video-active .video-backdrop {
+            opacity: 1;
+            pointer-events: auto;
+            cursor: pointer; /* 바깥 배경 마우스 커서를 pointer로 유도 */
+        }
+
+        body.video-active .hero-video-box {
+            z-index: 9999; /* 비디오를 블러 레이어 위로 끌어올림 */
+        }
+
+        /* 비디오 우측 상단 X 닫기 버튼 */
+        .video-close-btn {
+            position: absolute;
+            top: -18px;
+            right: -18px;
+            width: 42px;
+            height: 42px;
+            background: rgba(30, 30, 32, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #f5f5f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 300;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .video-close-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            transition: transform 0.25s ease;
+        }
+
+        .video-close-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.12);
+            border-color: #ffffff;
+        }
+
+        .video-close-btn:hover svg {
+            transform: rotate(90deg); /* 호버 시 90도 회전 애니메이션 효과 */
         }
 
         /* Section Common */
@@ -938,6 +1020,8 @@
 </head>
 <body>
 
+    <div class="video-backdrop" id="videoBackdrop"></div>
+
     <!-- Global Navigation -->
     <nav class="global-nav">
         <div class="nav-content">
@@ -1173,18 +1257,29 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const heroContainer = document.getElementById('heroVideoContainer');
+            const videoBackdrop = document.getElementById('videoBackdrop');
             const originalContent = heroContainer.innerHTML;
 
-            // 비디오 열기 및 강제 즉시 재생 함수
+            // 비디오 열기 함수
             function playVideo() {
                 if (isPlaying) return;
 
-                // 1. iframe을 들어갈 임시 div 생성
-                heroContainer.innerHTML = '<div id="youtubePlayerElement"></div>';
+                // 1. 비디오 박스 내부를 플레이어 요소와 X 닫기 버튼으로 구성
+                heroContainer.innerHTML = `
+                    <div id="youtubePlayerElement"></div>
+                    <button class="video-close-btn" id="videoCloseBtn" title="Close Video (Esc)">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6l12 12"/>
+                        </svg>
+                    </button>
+                `;
                 heroContainer.style.cursor = 'default';
+                
+                // 2. Body 태그에 active 클래스를 붙여 전체 배경 Blur 실행
+                document.body.classList.add('video-active');
                 isPlaying = true;
 
-                // 2. YouTube API 플레이어 생성
+                // 3. YouTube API 플레이어 생성 및 자동재생
                 player = new YT.Player('youtubePlayerElement', {
                     videoId: HERO_YOUTUBE_ID,
                     playerVars: {
@@ -1195,10 +1290,15 @@
                     },
                     events: {
                         'onReady': function(event) {
-                            // 플레이어 준비가 완료되는 순간 바로 강제 재생!
                             event.target.playVideo();
                         }
                     }
+                });
+
+                // X 버튼 클릭 이벤트 연결
+                document.getElementById('videoCloseBtn').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    closeVideo();
                 });
             }
 
@@ -1206,30 +1306,29 @@
             function closeVideo() {
                 if (!isPlaying) return;
 
-                // 플레이어 객체 파괴
                 if (player && typeof player.destroy === 'function') {
                     player.destroy();
                     player = null;
                 }
 
+                // 배경 블러 제거 및 원래 이미지 상태로 복원
+                document.body.classList.remove('video-active');
                 heroContainer.innerHTML = originalContent;
                 heroContainer.style.cursor = 'pointer';
                 isPlaying = false;
             }
 
-            // 비디오 박스 클릭 시 비디오 생성 & 즉시 재생
+            // 비디오 이미지 클릭 시 비디오 시작
             heroContainer.addEventListener('click', function(e) {
                 if (!isPlaying) {
-                    e.stopPropagation(); // 외부 클릭 이벤트와 충돌 방지
+                    e.stopPropagation();
                     playVideo();
                 }
             });
 
-            // 비디오 영역 밖(배경) 클릭 시 원래 이미지로 복원
-            document.addEventListener('click', function(e) {
-                if (isPlaying && !heroContainer.contains(e.target)) {
-                    closeVideo();
-                }
+            // 바깥 어두운 블러 배경을 클릭하면 닫기
+            videoBackdrop.addEventListener('click', function() {
+                closeVideo();
             });
 
             // ESC 키로 닫기
@@ -1239,7 +1338,6 @@
                 }
             });
         });
-
     </script>
 
 </body>
