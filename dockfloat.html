@@ -379,6 +379,7 @@
             cursor: pointer;
             overflow: hidden;
             width: 100%;
+            aspect-ratio: 16 / 9;
         }
 
 /* 재생 시작 시 부모 Flex 해제 및 비디오 꽉 채우기 */
@@ -404,20 +405,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.35); /* 마우스 호버 전 살짝 어둡게 */
+            background: rgba(0, 0, 0, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 16px;
-            opacity: 0; /* 평소에는 숨김 */
-            transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
             backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
+            z-index: 2;
         }
 
         /* 마우스 오버 시 플레이 버튼 표시 */
         .hero-video-box:hover .video-overlay {
             opacity: 1;
+        }
+
+        .hero-video-box iframe,
+        .hero-visual iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            border: 0;
+            border-radius: 16px;
+            display: block;
         }
 
         /* Play Icon (Glow & Glassmorphism) */
@@ -964,10 +978,11 @@
                  <img src="images/dock-float-1.webp" class="retina-img">
             </div>
             -->
-            <div class="img-placeholder-large hero-video-box" id="heroVideoContainer" style="min-height: 580px;">
+            <div class="hero-video-box" id="heroVideoContainer">
                 <img src="images/dock-float-1.webp" class="retina-img" alt="Dock Float Preview">
-            <div class="video-overlay">
-                <div class="play-btn-circle"></div>
+                <div class="video-overlay">
+                    <div class="play-btn-circle"></div>
+                </div>
             </div>
         </div>
         </div>
@@ -1157,19 +1172,17 @@
             if (heroContainer) {
                 heroContainer.addEventListener('click', function handler() {
                     const iframe = document.createElement('iframe');
-                    iframe.setAttribute('src', `https://www.youtube.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0`);
+                    
+                    // 유튜브 퍼가기 표준 URL 형식 적용
+                    iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0`);
                     iframe.setAttribute('title', 'Dock Float Overview Video');
                     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
                     iframe.setAttribute('allowfullscreen', 'true');
 
+                    // 기존 내용 제거 후 iframe으로 전체 교체
                     this.innerHTML = '';
-            
-                    this.style.minHeight = '';
-                    this.classList.add('is-playing');
-                    this.classList.remove('hero-video-box');
                     this.style.cursor = 'default';
-
-                    // 3. iframe 삽입
+                    this.style.padding = '0';
                     this.appendChild(iframe);
                     
                     this.removeEventListener('click', handler);
