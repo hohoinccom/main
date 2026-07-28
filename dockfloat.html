@@ -245,7 +245,8 @@
             width: 100%;
             max-width: 1040px;
         }
-        .cta-group {
+        
+        /*.cta-group {
             display: flex;
             gap: 16px;
             justify-content: center;
@@ -274,6 +275,178 @@
         .btn-outline:hover {
             border-color: #f5f5f7;
             background-color: rgba(255,255,255,0.05);
+        }*/
+        /* CTA Group Layout */
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+
+        /* Base Button Styling (기존 알약 모양 유지) */
+        .btn {
+            position: relative; /* 배지 위치 잡기용 */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 980px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            box-sizing: border-box;
+        }
+
+        /* 1. Primary White Button (Get Dock Float for macOS) */
+        .btn-primary {
+            background-color: #f5f5f7;
+            color: #000000;
+            border: 1px solid #f5f5f7;
+        }
+        .btn-primary:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(255, 255, 255, 0.15);
+        }
+
+        /* 2. Outline Dark Button (Get Dock Float Remote for iOS) */
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #f5f5f7;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        .btn-outline:hover {
+            border-color: #f5f5f7;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* 3. Glassmorphism Video Button (Watch Intro Video) */
+        .btn-video {
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #f5f5f7;
+            background-color: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .btn-video:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.16);
+            transform: translateY(-2px);
+        }
+
+        /* Badge Base Styling (우측 상단 배지) */
+        .btn-badge {
+            position: absolute;
+            top: -12px;                  /* 폰트가 커진 만큼 위치를 조금 더 위로 조절 */
+            right: 12px;
+            padding: 4px 11px;           /* [수정] 폰트에 맞춰 배지 알약 크기 약간 확대 (기존 3px 9px) */
+            border-radius: 980px;
+            font-size: 0.85rem;          /* [수정] 폰트 크기 확대 (기존 0.72rem -> 0.85rem) */
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        /* macOS $6.99 Badge (흰색 버튼 위에서 돋보이는 딥 블랙/다크 그레이) */
+        .btn-badge-dark {
+            background-color: #e62117;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* iOS Free Badge (애플 그린 포인트) */
+        .btn-badge-free {
+            background-color: #34ff67;
+            color: #000000;
+        }
+
+        /* Video Badge (플레이 기호 및 미니 테그) */
+        .btn-badge-video {
+            background-color: #e62117; /* 유튜브 레드 포인트 */
+            color: #ffffff;
+        }
+
+        /* Hero Visual Video Trigger Container */
+        .hero-video-box {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        /* Hover overlay & Play button */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35); /* 마우스 호버 전 살짝 어둡게 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            opacity: 0; /* 평소에는 숨김 */
+            transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+
+        /* 마우스 오버 시 플레이 버튼 표시 */
+        .hero-video-box:hover .video-overlay {
+            opacity: 1;
+        }
+
+        /* Play Icon (Glow & Glassmorphism) */
+        .play-btn-circle {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .play-btn-circle::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent #ffffff;
+            margin-left: 5px;
+        }
+
+        .hero-video-box:hover .play-btn-circle {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-video-box:hover .play-btn-circle::after {
+            border-color: transparent transparent transparent #000000;
+        }
+
+        /* 재생 시작 시 iframe styling */
+        .hero-video-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 580px;
+            border: 0;
+            border-radius: 16px;
+            display: block;
         }
 
         /* Section Common */
@@ -713,10 +886,14 @@
             }
             .cta-group {
                 flex-direction: column;
-                gap: 12px;
+                gap: 18px;
+                width: 100%;
             }
             .btn {
                 width: 100%;
+            }
+            .hero-video-box iframe {
+                min-height: 320px;
             }
         }
 
@@ -757,16 +934,25 @@
             <p>We’ve all been there. That moment you look at your screen and think, <span class="highlight-bottom-line-brighter-red">"<strong><i>I just need one more Dock."</i></strong></span><br><br>Dock Float transforms that familiar limitation into absolute freedom. It feels instantly native, blending seamlessly into your system without cluttering it. Just drag and drop your essential apps, files, and folders exactly as you always have. You can even add your favorite Apple Shortcuts right to the Dock for one-click automation.</p>
             <p>Whether you’re designing, coding, or just browsing the web, build a new Dock with exactly the tools and workflows you need right now. The workspace you’ve always imagined is finally a reality.</p>
             <div class="cta-group">
-                <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn btn-primary">Get Dock Float for macOS</a>
-                <a href="https://apps.apple.com/app/id6761806102" target="_blank" class="btn btn-outline">Get Dock Float Remote for iOS</a>
+                <!-- <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn" style="background-color: rgb(235, 0, 114); color: white; border: 1px solid rgba(255,255,255,0.2);">Watch Intro Video</a> -->
+                <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn btn-primary">Get Dock Float for macOS<span class="btn-badge btn-badge-dark">$6.99</span></a>
+                <a href="https://apps.apple.com/app/id6761806102" target="_blank" class="btn btn-outline">Get Dock Float Remote for iOS<span class="btn-badge btn-badge-free">Free</span></a>
             </div>
         </div>
         <div class="hero-visual">
+            <!--
             <div class="img-placeholder-large" style="min-height: 580px;">
-                <!-- <img src="hero-mockup@2x.png" alt="Hero Preview" class="retina-img"> -->
-                <!-- [ Hero Main Mockup View ]<br>권장 원본 크기: 2000px × 1100px 이상 (2x) -->
+                <img src="hero-mockup@2x.png" alt="Hero Preview" class="retina-img">
+                [ Hero Main Mockup View ]<br>권장 원본 크기: 2000px × 1100px 이상 (2x)
                  <img src="images/dock-float-1.webp" class="retina-img">
             </div>
+            -->
+            <div class="img-placeholder-large hero-video-box" id="heroVideoContainer" style="min-height: 580px;">
+                <img src="images/dock-float-1.webp" class="retina-img" alt="Dock Float Preview">
+            <div class="video-overlay">
+                <div class="play-btn-circle"></div>
+            </div>
+        </div>
         </div>
     </div>
 
@@ -847,7 +1033,7 @@
 
         <!-- 1. Group -->
         <div class="workflow-item">
-            <h3><strong><span class="highlight-brighter-purple">Group:</span></strong> Extreme simplicity. Everything in one icon.</h3>
+            <h3><strong><span class="highlight-brighter-purple">Group</span></strong>  Extreme simplicity. Everything in one icon.</h3>
             <p>No matter how many tools you juggle, your screen should stay pristine. <strong style="color: white;">Group</strong> any related apps, files, or folders into a single, beautifully unified icon on your Dock based on your own logic. Click the Group, and everything you tucked away instantly unfolds.<br><strong><span class="highlight-bottom-line-light-purple" style="color: white;">It’s the most elegant way to conquer limited screen space.</span></strong></p>
             <div class="video-container-large">
                 <video autoplay loop muted playsinline poster="images/dock-float-group-preview.webp" class="retina-video">
@@ -859,7 +1045,7 @@
 
         <!-- 2. Flow -->
         <div class="workflow-item">
-            <h3><strong><span class="highlight-dark-green">Flow:</span></strong> Connect the context. Unbroken focus.</h3>
+            <h3><strong><span class="highlight-dark-green">Flow</span></strong>  Connect the context. Unbroken focus.</h3>
             <p>Tired of digging for the same files every time you launch an app? <strong style="color: white;">Flow</strong> solves this intelligently. Pre-link essential files and folders to a specific program. The moment you launch that program, your predefined toolkit seamlessly glides in. No searching. Just unbroken focus<br><br><strong style="color: white;">Flow</strong> solves this intelligently. Pre-link essential files, folders, and apps to a specific program. The moment you launch that program, your predefined toolkit seamlessly glides in from the edge of the screen. No searching. No friction. Just a perfectly uninterrupted workflow.</p>
             <div class="video-container-large">
                 <video autoplay loop muted playsinline poster="images/dock-float-group-preview.webp" class="retina-video">
@@ -871,8 +1057,8 @@
 
         <!-- 3. Dock Float Remote -->
         <div class="workflow-item">
-            <h3><strong><span class="highlight-blue">Dock Float Remote:</span></strong><br>The ultimate wireless control center on your desk.</h3>
-            <p>Extend your macOS command center directly into your mobile ecosystem. Open the <strong style="color: white;">Dock Float Remote</strong> app on your iPhone or iPad. Every Dock on your Mac syncs in real time. A light tap on your device launches Mac apps or instantly opens documents.<br><br>We’ve also added customizable <strong style="color: white;">Action Button</strong> to supercharge your speed. Map <span class="highlight-bottom-line-brighter-red " style="color: white;">Mission Control, App Switcher, Launchpad (or Apps in macOS 26+), and Screen Capture</span> to intuitive buttons. Command your Mac wirelessly without learning new keyboard shortcuts. Turn on the <strong style="color: white;">'Keep Your iPhone Awake'</strong> option (while plugged in), and you have a dedicated, always-on macro pad right at your fingertips.</p>
+            <h3><strong><span class="highlight-blue">Dock Float Remote</span></strong><br>The ultimate wireless control center on your desk.</h3>
+            <p>Extend your macOS command center directly into your mobile ecosystem. Open the <strong style="color: white;">Dock Float Remote</strong> app on your iPhone or iPad. Every Dock on your Mac syncs in real time. A light tap on your device launches Mac apps or instantly opens documents.<br><br>We’ve also added customizable <strong style="color: white;">Action Button</strong> to supercharge your speed. Map <span class="highlight-bottom-line-brighter-red " style="color: white;">Mission Control, Launchpad (or Apps in macOS 26+), and Screen Capture</span> to intuitive buttons. Command your Mac wirelessly without learning new keyboard shortcuts. Turn on the <strong style="color: white;">'Keep Your iPhone Awake'</strong> option (while plugged in), and you have a dedicated, always-on macro pad right at your fingertips.</p>
             <div class="img-placeholder-large">
                 <img src="images/dock-float-6.webp" class="retina-img">
             </div>
@@ -880,7 +1066,7 @@
 
         <!-- 4. Shelf -->
         <div class="workflow-item">
-            <h3><strong><span class="highligh-dark-crimson">Shelf:</span></strong> Shake to open. Toss to store.</h3>
+            <h3><strong><span class="highligh-dark-crimson">Shelf</span></strong>  Shake to open. Toss to store.</h3>
             <p>Copied text, a quick screenshot, a file you’ll need in exactly two minutes. Stop littering your desktop. Just give your mouse a quick <strong style="color: white;">shake</strong>. The <strong style="color: white;">Shelf</strong> quietly wakes up on your screen. Toss anything into this temporary holding space and pull it out whenever you need it. It’s your secret workspace, designed to ensure your focus never breaks.</p>
             <div class="video-container-large">
                 <video autoplay loop muted playsinline poster="images/doct-float-shelf-preview.webp" class="retina-video">
@@ -943,6 +1129,33 @@
             <p class="copyright">&copy; 2024~<script>document.write(new Date().getFullYear())</script> HOHOINC. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- 유튜브 비디오 전환 스크립트 -->
+    <script>
+        const HERO_YOUTUBE_ID = "hywbZIeL9S4"; 
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const heroContainer = document.getElementById('heroVideoContainer');
+
+            if (heroContainer) {
+                heroContainer.addEventListener('click', function handler() {
+                    const iframe = document.createElement('iframe');
+                    iframe.setAttribute('src', `https://www.youtube.com/embed/${HERO_YOUTUBE_ID}?autoplay=1&rel=0`);
+                    iframe.setAttribute('title', 'Dock Float Overview Video');
+                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                    iframe.setAttribute('allowfullscreen', 'true');
+
+                    this.innerHTML = '';
+                    this.appendChild(iframe);
+                    
+                    this.style.cursor = 'default';
+                    this.classList.remove('hero-video-box');
+                    
+                    this.removeEventListener('click', handler);
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
