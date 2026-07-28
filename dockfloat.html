@@ -378,6 +378,23 @@
             position: relative;
             cursor: pointer;
             overflow: hidden;
+            width: 100%;
+        }
+
+/* 재생 시작 시 부모 Flex 해제 및 비디오 꽉 채우기 */
+        .hero-video-box.is-playing {
+            display: block !important; /* flex 속성을 풀어 비디오가 꽉 차게 만듭니다 */
+            height: auto !important;
+            min-height: 0 !important;
+            aspect-ratio: 16 / 9; /* 박스 전체를 16:9 비율로 고정 */
+        }
+
+        .hero-video-box.is-playing iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 16px;
+            display: block;
         }
 
         /* Hover overlay & Play button */
@@ -1146,11 +1163,14 @@
                     iframe.setAttribute('allowfullscreen', 'true');
 
                     this.innerHTML = '';
-                    this.style.minHeight = 'auto';
-                    this.appendChild(iframe);
-                    
-                    this.style.cursor = 'default';
+            
+                    this.style.minHeight = '';
+                    this.classList.add('is-playing');
                     this.classList.remove('hero-video-box');
+                    this.style.cursor = 'default';
+
+                    // 3. iframe 삽입
+                    this.appendChild(iframe);
                     
                     this.removeEventListener('click', handler);
                 });
