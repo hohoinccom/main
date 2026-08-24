@@ -246,6 +246,36 @@
             max-width: 1040px;
         }
         
+        /*.cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 980px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #f5f5f7;
+            color: #000000;
+        }
+        .btn-primary:hover {
+            background-color: #ffffff;
+            transform: scale(1.02);
+        }
+        .btn-outline {
+            border: 1px solid #424245;
+            color: #f5f5f7;
+        }
+        .btn-outline:hover {
+            border-color: #f5f5f7;
+            background-color: rgba(255,255,255,0.05);
+        }*/
         /* CTA Group Layout */
         .cta-group {
             display: flex;
@@ -324,7 +354,7 @@
             line-height: 1;
         }
 
-        /* macOS Badge (흰색 버튼 위에서 돋보이는 딥 레드/다크 그레이) */
+        /* macOS $6.99 Badge (흰색 버튼 위에서 돋보이는 딥 블랙/다크 그레이) */
         .btn-badge-dark {
             background-color: #e62117;
             color: #ffffff;
@@ -719,34 +749,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* 할인 관련 새로 추가된 스타일 */
-        .price-discount-wrapper {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .price-val-original {
-            font-size: 0.95rem;
-            color: #86868b;
-            text-decoration: line-through;
-            font-weight: 500;
-        }
-        .price-val-sale {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-        .price-badge-sale {
-            background-color: rgba(161, 160, 160, 0.15);
-            color: #ffffff;
-            border: 1px solid rgba(181, 181, 181, 0.35);
-            padding: 2px 8px;
-            border-radius: 980px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-        }
         .price-badge-free {
             background-color: rgba(48, 209, 88, 0.15);
             color: #30d158;
@@ -1048,17 +1050,25 @@
             <p>Whether you’re designing, coding, or just browsing the web, build a new Dock with exactly the tools and workflows you need right now. The workspace you’ve always imagined is finally a reality.</p>
             <div class="cta-group">
                 <!-- <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn" style="background-color: rgb(235, 0, 114); color: white; border: 1px solid rgba(255,255,255,0.2);">Watch Intro Video</a> -->
-                <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn btn-primary">Get Dock Float for macOS<span class="btn-badge btn-badge-dark"><s style="opacity: 0.65; font-weight: 400; text-decoration: line-through; margin-right: 4px;">$6.99</s>$3.99</span></a>
+                <a href="https://apps.apple.com/app/id6761350104?mt=12" target="_blank" class="btn btn-primary">Get Dock Float for macOS<span class="btn-badge btn-badge-dark">$6.99</span></a>
                 <a href="https://apps.apple.com/app/id6761806102" target="_blank" class="btn btn-outline">Get Dock Float Remote for iOS<span class="btn-badge btn-badge-free">Free</span></a>
             </div>
         </div>
         <div class="hero-visual">
+            <!--
+            <div class="img-placeholder-large" style="min-height: 580px;">
+                <img src="hero-mockup@2x.png" alt="Hero Preview" class="retina-img">
+                [ Hero Main Mockup View ]<br>권장 원본 크기: 2000px × 1100px 이상 (2x)
+                 <img src="images/dock-float-1.webp" class="retina-img">
+            </div>
+            -->
             <div class="hero-video-box" id="heroVideoContainer">
                 <img src="images/dock-float-1.webp" class="retina-img" alt="Dock Float Preview">
                 <div class="video-overlay">
                     <div class="play-btn-circle"></div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
@@ -1076,6 +1086,8 @@
                 </div>
                 <div class="bento-visual">
                     <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
+                        <!-- [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
                          <img src="images/dock-float-2.webp" class="retina-img">
                     </div>
                 </div>
@@ -1090,6 +1102,8 @@
                 </div>
                 <div class="bento-visual">
                     <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
+                        <!-- [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
                          <img src="images/dock-float-3.webp" class="retina-img">
                     </div>
                 </div>
@@ -1104,6 +1118,8 @@
                 </div>
                 <div class="bento-visual">
                     <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- <img src="bento-unlimited@2x.png" alt="Unlimited Docks" class="retina-img"> -->
+                        <!-- [ Unlimited Docks & Categories Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
                          <img src="images/dock-float-4.webp" class="retina-img">
                     </div>
                 </div>
@@ -1118,6 +1134,7 @@
                 </div>
                 <div class="bento-visual">
                     <div class="img-placeholder-large" style="min-height: 480px;">
+                        <!-- [ Customization Settings Large View ]<br>권장 원본 크기: 1800px × 960px 이상 (2x) -->
                         <img src="images/dock-float-5.webp" class="retina-img">
                     </div>
                 </div>
@@ -1197,11 +1214,7 @@
                 <div class="price-highlight-card">
                     <div class="price-item">
                         <span class="price-label"><a href="https://apps.apple.com/app/id6761350104?mt=12">Dock Float for macOS</a></span>
-                        <div class="price-discount-wrapper">
-                            <span class="price-val-original">$6.99</span>
-                            <span class="price-val-sale">$3.99</span>
-                            <span class="price-badge-sale">Limited Time</span>
-                        </div>
+                        <span class="price-val-mac">$6.99</span>
                     </div>
                     <div class="price-item">
                         <span class="price-label"><a href="https://apps.apple.com/app/id6761806102" target="_blank">Dock Float Remote for iOS</a></span>
